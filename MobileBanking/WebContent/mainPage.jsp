@@ -31,6 +31,16 @@
          <input type="textbox" name="output" />
       </div>
     </section>
+    
+    <table id="tabelUltimeleTranzactii">
+    	<tr>
+    		<th>Nume Sursa</th>
+    		<th>IBAN Sursa</th>
+    		<th>Nume Destinatie</th>
+    		<th>IBAN Destinatie</th>
+    	</tr>
+    	
+    </table>
 	
 	
 </body>
