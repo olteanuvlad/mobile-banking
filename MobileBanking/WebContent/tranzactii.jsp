@@ -7,7 +7,7 @@
 <link href="style.css" rel="stylesheet">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>TrnazactiiOnline</title>
+<title>TranzactiiOnline</title>
 </head>
 <body>
 	<header>
@@ -24,6 +24,12 @@
 	        </nav>
 	      </div>
 	</header>
+
+	<form method="post" action="newtransaction" class="containerLog">
+          Cod IBAN destinatar:<input type="text" name="receiveriban" required/><br/>
+          Suma:<input type="number" name="ammount" min="1" required />
+          <input type="submit" value="Send" id="butonSubmitUserSiParola">
+    </form>
 
 </body>
 </html>

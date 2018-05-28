@@ -2,7 +2,8 @@ package classes;
 
 public class Transaction {
 	private String numeSursa, numeDestinatie,ibanSursa, ibanDestinatie, data;
-	double suma, nrTranzactie;
+	private double suma; 
+	private int nrTranzactie;
 	public Transaction(String numeSursa, String numeDestinatie, String ibanSursa, String ibanDestinatie, double suma, String data, int nrTranzactie) {
 		super();
 		this.numeSursa = numeSursa;
