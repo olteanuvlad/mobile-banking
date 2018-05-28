@@ -18,6 +18,13 @@
       </div>
     </header>
     
+    <form method="post" action="login">
+	        Email ID:<input type="text" name="unamelog" required/><br/>
+	        Password:<input type="text" name="pwdlog" required/><br/>
+	        <input type="submit" value="login" />
+	        </form>
+    		<% out.print(request.getAttribute("message")); %>
+    
     <section> 
 	<div class="containerLog">
 	<form>
@@ -25,15 +32,9 @@
     		<img src="logoB.png" alt="Avatar" class="avatar">
   	</div>
 
-  	<div class="container">
-    		<label for="uname"><b>Username</b></label>
-    		<input type="text" placeholder="Enter Username" name="uname" required>
-
-    		<label for="psw"><b>Password</b></label>
-    		<input type="password" placeholder="Enter Password" name="psw" required>
-        
-    		<button id="butonSubmitUserSiParola" type="submit">Login</button>
-  	</div>
+  	
+  			
+  	
 	</form>
 	</div>
     </section>    

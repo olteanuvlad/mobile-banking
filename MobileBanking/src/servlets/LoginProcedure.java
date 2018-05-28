@@ -39,14 +39,17 @@ public class LoginProcedure extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void loginFailure(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	request.setAttribute("message", "Invalid username or password.");
-    	getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+    	//request.setAttribute("message", "Invalid username or password.");
+    	//getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
+    	response.getWriter().append("Login failure");
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String uname = request.getParameter("username");
-		String pwd = request.getParameter("password");
+		
+		String uname = request.getParameter("unamelog");
+		String pwd = request.getParameter("pwdlog");
+		
 		if(uname==null||pwd==null) {
 			loginFailure(request,response);
 			return;
@@ -63,7 +66,10 @@ public class LoginProcedure extends HttpServlet {
 							//forward to 2FA
 						}
 						else {
-						request.getSession().setAttribute("user_id", rs.getInt("USER_ID"));
+						//request.getSession().setAttribute("user_id", rs.getInt("USER_ID"));
+						//request.setAttribute("message","Succes");
+						//getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
+							response.getWriter().append("Succes");
 						}
 						//TO DO  Forward to dashboard page
 					}
@@ -80,16 +86,7 @@ public class LoginProcedure extends HttpServlet {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+			response.getWriter().append(e.getMessage());		}
 	}
 
 }
