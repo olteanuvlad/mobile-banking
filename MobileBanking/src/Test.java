@@ -9,7 +9,7 @@ public class Test {
 	    String pass = "test";
 	    byte[] code = pass.getBytes();
 	    try {
-	    System.out.println(HOTPAlgorithm.generateOTP(code, 1, 6, false, 1));
+	    System.out.println(HOTPAlgorithm.generateOTP(code, 2, 6, false, 2));
 	    }
 	    catch (Exception e) {
 	    System.out.println("Exception = " + e);

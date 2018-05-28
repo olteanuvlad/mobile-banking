@@ -18,26 +18,28 @@
       </div>
     </header>
     
-    <form method="post" action="login">
-	        Email ID:<input type="text" name="unamelog" required/><br/>
-	        Password:<input type="text" name="pwdlog" required/><br/>
-	        <input type="submit" value="login" />
-	        </form>
-    		<% out.print(request.getAttribute("uname")); %>
-    
-    <section> 
-	<div class="containerLog">
-	<form>
- 	<div class="imgcontainer">
-    		<img src="logoB.png" alt="Avatar" class="avatar">
-  	</div>
+    <div class="containerLog">
+	      <form>
+ 	         <div class="imgcontainer">
+    		       <img src="logoB.png" alt="Avatar" class="avatar">
+             </div>
+          </form>
+	</div>
 
-  	
+
+    <form method="post" action="login" class="containerLog">
+          Email ID:<input type="text" name="unamelog" required/><br/>
+          Password:<input type="text" name="pwdlog" required/><br/>
+          <input type="submit" value="login" id="butonSubmitUserSiParola">
+    </form>
+    
+    
+    <div class="containerLog">
+    <a href="register.jsp">Creare cont.</a>
+    </div>
   			
   	
-	</form>
-	</div>
-    </section>    
+	
     
 </body>
 </html>
