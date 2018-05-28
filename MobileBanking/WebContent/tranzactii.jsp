@@ -17,7 +17,7 @@
 	        </div>
 	        <nav>
 	          <ul>
-	            <li class="current"><a href="mainPage.jsp">Lobby</a></li>
+	            <li><a href="mainPage.jsp">Lobby</a></li>
 	            <li class="current"><a href="tranzactii.jsp">Tranzactii Online</a></li>
 	            <li><a href="plata.jsp">Shop</a></li>
 	          </ul>

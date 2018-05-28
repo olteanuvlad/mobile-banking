@@ -27,7 +27,7 @@
 		Email:<br/>
 		<input type="text" name="email" required /><br/>
 		Password:<br/>
-		<input type="text" name="pwd" required /><br/>
+		<input type="password" name="pwd" required /><br/>
 		IBAN:<br/>
 		<input type="text" name="iban" required /><br/>
 		Digipass device serial key(optional):<br/>

@@ -29,7 +29,7 @@
 
     <form method="post" action="login" class="containerLog">
           Email ID:<input type="text" name="unamelog" required/><br/>
-          Password:<input type="text" name="pwdlog" required/><br/>
+          Password:<input type="password" name="pwdlog" required/><br/>
           <input type="submit" value="login" id="butonSubmitUserSiParola">
     </form>
     

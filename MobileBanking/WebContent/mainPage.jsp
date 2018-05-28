@@ -13,7 +13,7 @@
 	<header>
 	      <div class="container">
 	        <div id="brand">
-	          <h1><span class="highlight">Hip-Hop</span> Romania</h1>
+	          <h1>Online Banking</h1>
 	        </div>
 	        <nav>
 	          <ul>
