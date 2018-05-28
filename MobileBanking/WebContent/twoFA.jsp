@@ -4,14 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link href="style.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width">
+<title>Autentificare</title>
 </head>
 <body>
-	<form action="twofactorauth" method="post">
+<header>
+      <div class="container">
+        <div id="brand">
+          <h1>Online Banking</h1>
+        </div>
+      </div>
+</header>
+	
+	<form action="twofactorauth" method="post" class="containerLog">
 		Digipass Code:<br/>
 		<input type="text" name="otp" /><br/>
 		
-		<input type="submit" name="twofactorauth" value="Submit" />
+		<input type="submit" name="twofactorauth" value="Submit" id="butonSubmitUserSiParola">
 	</form>
 </body>
 </html>
