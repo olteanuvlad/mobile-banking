@@ -41,7 +41,8 @@ public class LoginProcedure extends HttpServlet {
     protected void loginFailure(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	//request.setAttribute("message", "Invalid username or password.");
     	//getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
-    	response.getWriter().append("Login failure");
+    	request.setAttribute("message", "Login failure");
+    	getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,16 +61,16 @@ public class LoginProcedure extends HttpServlet {
 			ps.setString(2,uname);
 			try(ResultSet rs = ps.executeQuery();){
 				if(rs.next()){
-					//String salt = rs.getString("PWD_HASH_SALT");
 					if(BCrypt.checkpw(pwd, rs.getString("PWD_HASH"))) {
+						request.getSession().setAttribute("user_id", rs.getInt("USER_ID"));
 						if(rs.getString("HOTP_SERIAL")!=null) {
-							//forward to 2FA
+							getServletContext().getRequestDispatcher("/twoFA.jsp").forward(request, response);;
 						}
 						else {
-						//request.getSession().setAttribute("user_id", rs.getInt("USER_ID"));
+							request.getSession().setAttribute("logged", true);
 						//request.setAttribute("message","Succes");
 						//getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
-							response.getWriter().append("Succes");
+							getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
 						}
 						//TO DO  Forward to dashboard page
 					}

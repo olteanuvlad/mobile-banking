@@ -23,7 +23,7 @@
 	        Password:<input type="text" name="pwdlog" required/><br/>
 	        <input type="submit" value="login" />
 	        </form>
-    		<% out.print(request.getAttribute("message")); %>
+    		<% out.print(request.getAttribute("uname")); %>
     
     <section> 
 	<div class="containerLog">
