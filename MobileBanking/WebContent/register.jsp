@@ -4,10 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link href="style.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width">
+<title>Register</title>
 </head>
 <body>
-	<form action="register" method="post">
+
+<header>
+      <div class="container">
+        <div id="brand">
+          <h1>Online Banking</h1>
+        </div>
+      </div>
+</header>
+
+
+
+
+	<form action="register" method="post"class="containerLog">
 		Username:<br/>
 		<input type="text" name="uname" required /><br/>
 		Email:<br/>
@@ -19,7 +33,7 @@
 		Digipass device serial key(optional):<br/>
 		<input type="text" name="serial" /><br/>
 		
-		<input type="submit" name="register" value="Register">
+		<input type="submit" name="register" value="Register" id="butonSubmitUserSiParola">
 	</form>
 </body>
 </html>
