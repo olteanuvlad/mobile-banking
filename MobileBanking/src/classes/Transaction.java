@@ -2,7 +2,7 @@ package classes;
 
 public class Transaction {
 	private String numeSursa, numeDestinatie,ibanSursa, ibanDestinatie, data;
-	private double suma; 
+	private double suma;
 	private int nrTranzactie;
 	public Transaction(String numeSursa, String numeDestinatie, String ibanSursa, String ibanDestinatie, double suma, String data, int nrTranzactie) {
 		super();
@@ -14,6 +14,16 @@ public class Transaction {
 		this.nrTranzactie=nrTranzactie;
 		this.data=data;
 	}
+	
+	public String getData() {
+		return data;
+	}
+	
+	public int getNrTranzactie() {
+		return nrTranzactie;
+	}
+	
+	
 	public String getNumeSursa() {
 		return numeSursa;
 	}

@@ -327,6 +327,17 @@ img.avatar {
   margin-top: 10px;
 }
 
+#tabelUltimeleTranzactii{
+  width : 100%;
+  margin:auto;
+  margin-top: 50px;
+
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
 
 
 /* Media Queries */
