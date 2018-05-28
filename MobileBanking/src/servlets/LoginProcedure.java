@@ -70,7 +70,7 @@ public class LoginProcedure extends HttpServlet {
 							request.getSession().setAttribute("logged", true);
 						//request.setAttribute("message","Succes");
 						//getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
-							getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
+							getServletContext().getRequestDispatcher("/transactions").forward(request, response);
 						}
 						//TO DO  Forward to dashboard page
 					}

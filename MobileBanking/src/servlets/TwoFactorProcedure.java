@@ -74,7 +74,7 @@ public class TwoFactorProcedure extends HttpServlet {
 					if(clientOTP.equals(serverOTP)) {
 						request.getSession().setAttribute("logged", true);
 						updateCount(uid,cnt);
-						getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
+						getServletContext().getRequestDispatcher("/transactions").forward(request, response);
 					}
 					else {
 						response.getWriter().append("Invalid code");

@@ -27,8 +27,7 @@
 	
 	<section>
       <div class="container">
-    	   <h2>Sold curent:</h2>
-         <input type="textbox" name="output" />
+    	   <h2>Sold curent: <% out.print(request.getAttribute("sold")); %></h2>
       </div>
     </section>
     

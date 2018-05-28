@@ -113,6 +113,9 @@ public class RegisterProcedure extends HttpServlet {
 				ps.setString(5, null);
 			}
 			else ps.setString(5, serial);
+			
+			ps.executeUpdate();
+			
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			
 		} catch (SQLException e) {
