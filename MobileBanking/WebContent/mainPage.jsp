@@ -32,14 +32,64 @@
       </div>
     </section>
     
+    
+    	
     <table id="tabelUltimeleTranzactii">
     	<tr>
-    		<th>Nume Sursa</th>
+        <th>Nr Tranzactie</th>
+        <th>Nume Sursa</th>
     		<th>IBAN Sursa</th>
     		<th>Nume Destinatie</th>
     		<th>IBAN Destinatie</th>
+        <th>Suma</th>
+        <th>Data</th>
     	</tr>
-    	
+      <tr>
+        <td>a</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>a</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
     </table>
 	
 	
