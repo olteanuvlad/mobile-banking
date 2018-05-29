@@ -65,8 +65,53 @@ public class NewTransaction extends HttpServlet {
 		}
 		
 		//Check if IBAN valid
-		try(Connection con=dbRes.getConnection();){
+		try(Connection con=dbRes.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT 'X' FROM ACCOUNTS WHERE IBAN=?");){
+			ps.setString(1, iban);
+			try(ResultSet rs=ps.executeQuery();){
+				if(!rs.next()) {
+					sendFailure(request,response,"There is no account with that IBAN.");
+					return;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Perform transfer
+		try(Connection con = dbRes.getConnection();
+			PreparedStatement ps1=con.prepareStatement("UPDATE ACCOUNTS SET BALANCE=BALANCE-? WHERE ACCOUNT_NUMBER=(SELECT ACC_NUMBER FROM USERS WHERE USER_ID=?)");
+			PreparedStatement ps2=con.prepareStatement("UPDATE ACCOUNTS SET BALANCE=BALANCE+? WHERE IBAN=?");
+			PreparedStatement ps3=con.prepareStatement("INSERT INTO TRANSACTIONS(TRANSACTION_DATE, DONOR, DONOR_TEXT, RECEIVER_TEXT, RECEIVER, AMMOUNT) "
+					+ "VALUES("
+					+ "NOW(),"
+					+ "(SELECT ACC_NUMBER FROM USERS WHERE USER_ID=?),"
+					+ "(SELECT A.IBAN FROM ACCOUNTS A, USERS U WHERE U.ACC_NUMBER=A.ACCOUNT_NUMBER AND U.USER_ID=?),"
+					+ "?,"
+					+ "(SELECT ACCOUNT_NUMBER FROM ACCOUNTS WHERE IBAN=?),"
+					+ "?"
+					+ ");")){
 			
+			ps1.setDouble(1, ammount);
+			ps1.setInt(2, uid);
+			ps1.executeUpdate();
+			
+			ps2.setDouble(1, ammount);
+			ps2.setString(2, iban);
+			ps2.executeUpdate();
+			
+			ps3.setInt(1,uid);
+			ps3.setInt(2, uid);
+			ps3.setString(3, iban);
+			ps3.setString(4, iban);
+			ps3.setDouble(5, ammount);
+			ps3.executeUpdate();
+			
+			getServletContext().getRequestDispatcher("/transactions").forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			response.getWriter().append(e.getMessage());
 		}
 	}
 

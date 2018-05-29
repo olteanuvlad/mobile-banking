@@ -2,9 +2,9 @@ package classes;
 
 public class Transaction {
 	private String numeSursa, numeDestinatie,ibanSursa, ibanDestinatie, data;
-	private double suma;
-	private int nrTranzactie;
-	public Transaction(String numeSursa, String numeDestinatie, String ibanSursa, String ibanDestinatie, double suma, String data, int nrTranzactie) {
+	private Double suma;
+	private Integer nrTranzactie;
+	public Transaction(String numeSursa, String numeDestinatie, String ibanSursa, String ibanDestinatie, Double suma, String data, Integer nrTranzactie) {
 		super();
 		this.numeSursa = numeSursa;
 		this.numeDestinatie = numeDestinatie;
@@ -19,7 +19,7 @@ public class Transaction {
 		return data;
 	}
 	
-	public int getNrTranzactie() {
+	public Integer getNrTranzactie() {
 		return nrTranzactie;
 	}
 	
@@ -48,10 +48,10 @@ public class Transaction {
 	public void setIbanDestinatie(String ibanDestinatie) {
 		this.ibanDestinatie = ibanDestinatie;
 	}
-	public double getSuma() {
+	public Double getSuma() {
 		return suma;
 	}
-	public void setSuma(double suma) {
+	public void setSuma(Double suma) {
 		this.suma = suma;
 	}
 }

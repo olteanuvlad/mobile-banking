@@ -10,6 +10,11 @@
 <title>OnlineBanking</title>
 </head>
 <body>
+	<%
+	if(request.getSession().getAttribute("user_id")!=null&&(boolean)request.getSession().getAttribute("logged")==true){
+		getServletContext().getRequestDispatcher("/transactions").forward(request,response);
+	}
+	%>
 	<header>
       <div class="container">
         <div id="brand">
