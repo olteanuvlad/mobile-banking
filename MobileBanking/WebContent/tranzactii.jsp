@@ -19,7 +19,7 @@
 	          <ul>
 	            <li><a href="mainPage.jsp">Lobby</a></li>
 	            <li class="current"><a href="tranzactii.jsp">Tranzactii Online</a></li>
-	            <li><a href="plata.jsp">Shop</a></li>
+	            <li><a href="plata.jsp">Plata cu cardul</a></li>
 	          </ul>
 	        </nav>
 	      </div>

@@ -31,6 +31,21 @@ public class NewTransaction extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    protected boolean checkCard(HttpServletRequest request, HttpServletResponse response, int uid) {
+    	try(Connection con = dbRes.getConnection();
+    		PreparedStatement ps = con.prepareStatement("SELECT A.CARD_NUMBER, A.CVV_CODE FROM ACCOUNTS A, USERS U WHERE U.ACC_NUMBER=A.ACCOUNT_NUMBER AND U.USER_ID=?");){
+    		ps.setInt(1,uid);
+    		try(ResultSet rs=ps.executeQuery()){
+    			if(request.getParameter("card_number").equals(rs.getString("CARD_NUMBER"))&&request.getParameter("cvv_code").equals(rs.getString("CVV_CODE"))) {
+    				return true;
+    			}
+    		}
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return true;
+    }
     
     protected void sendFailure(HttpServletRequest request, HttpServletResponse response, String message) throws IOException {
     	response.getWriter().append(message);
@@ -42,6 +57,11 @@ public class NewTransaction extends HttpServlet {
 		int uid =(int) request.getSession().getAttribute("user_id");
 		if(uid<1||(boolean)request.getSession().getAttribute("logged")!=true) {
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			return;
+		}
+		
+		if(request.getParameter("card_number")!=null&&checkCard(request,response, uid)==false) {
+			getServletContext().getRequestDispatcher("/plata.jsp").forward(request,response);
 			return;
 		}
 		

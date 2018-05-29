@@ -19,7 +19,7 @@
 	          <ul>
 	            <li class="current"><a href="mainPage.jsp">Lobby</a></li>
 	            <li><a href="tranzactii.jsp">Tranzactii Online</a></li>
-	            <li><a href="plata.jsp">Shop</a></li>
+	            <li><a href="plata.jsp">Plata cu cardul</a></li>
 	          </ul>
 	        </nav>
 	      </div>
@@ -27,12 +27,16 @@
 	
 	<section>
       <div class="container">
+      		<h2> <% if(request.getAttribute("name")!=null){
+      				out.print(request.getAttribute("name"));
+      			}%></h2>
     	   <h2>Sold curent: <% out.print(request.getAttribute("sold")); %></h2>
       </div>
     </section>
     
     <%@page import="classes.Transaction"%>
-    <% Transaction[] x=(Transaction[])request.getAttribute("transactions"); %>
+    <% Transaction[] x=(Transaction[])request.getAttribute("transactions"); 
+    	if(x==null)x = new Transaction[5];%>
     	
     <table id="tabelUltimeleTranzactii">
     	<tr>
@@ -45,37 +49,37 @@
         <th>Data</th>
     	</tr>
       <tr>
-        <td><% if(x[0].getNrTranzactie()!=null){
+        <td><% if(x[0]!=null){
         	out.print(x[0].getNrTranzactie());}
         	else
         		out.print("");
        	 %></td>
-        <td><% if(x[0].getNumeSursa()!=null)
+        <td><% if(x[0]!=null)
         		   out.print(x[0].getNumeSursa());
         		else
         			out.print("");
         %></td>
-        <td><% if(x[0].getIbanSursa()!=null) 
+        <td><% if(x[0]!=null) 
         		   out.print(x[0].getIbanSursa());
         	   else
         		   out.print("");
         %></td>
-        <td><% if(x[0].getNumeDestinatie()!=null) 
+        <td><% if(x[0]!=null) 
         			out.print(x[0].getNumeDestinatie());
         	   else
         		   out.print("");
         %></td>
-        <td><%if(x[0].getIbanDestinatie()!=null)
+        <td><%if(x[0]!=null)
         			out.print(x[0].getIbanDestinatie());
         	   else
         	   		out.print("");
        	%></td>
-        <td><%if(x[0].getSuma()!=null)
+        <td><%if(x[0]!=null)
         			out.print(x[0].getSuma());
         	  else
         			out.print("");
         %></td>
-        <td><% if(x[0].getData()!=null)
+        <td><% if(x[0]!=null)
                    out.print(x[0].getData());
                else
                	   out.print("");
@@ -236,7 +240,8 @@
       
 
     </table>
-	
-	
+	<form method="get" action="logout" class="containerLog">
+		<input type="submit" name="x" value="Logout" id="butonSubmitUserSiParola">
+	</form>
 </body>
 </html>

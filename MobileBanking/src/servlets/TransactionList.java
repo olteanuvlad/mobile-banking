@@ -36,7 +36,7 @@ public class TransactionList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doPost(request,response);
     }
-
+    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -46,6 +46,20 @@ public class TransactionList extends HttpServlet {
 		if(uid<1||(boolean)request.getSession().getAttribute("logged")!=true) {
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 			return;
+		}
+		
+		
+		try(Connection con = dbRes.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT CONCAT(A.LAST_NAME,' ',A.FIRST_NAME) AS 'NUME' FROM ACCOUNTS A, USERS U WHERE U.ACC_NUMBER=A.ACCOUNT_NUMBER AND U.USER_ID=?");){
+			ps.setInt(1, uid);
+			try(ResultSet rs=ps.executeQuery()){
+				if(rs.next()) {
+					request.setAttribute("name", rs.getString("NUME"));
+				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		//Get transactions AND BALANCE
@@ -79,7 +93,7 @@ public class TransactionList extends HttpServlet {
 			try(ResultSet rs = ps.executeQuery();){
 				int counter=-1;
 				Transaction[] trans = new Transaction[5];
-				while(rs.next()&&++counter<=5) {
+				while(rs.next()&&++counter<=4) {
 					trans[counter] = new Transaction(rs.getString("DONOR_NAME"),rs.getString("RECEIVER_NAME"),rs.getString("DONOR_IBAN"),rs.getString("RECEIVER_IBAN"),rs.getDouble("AMMOUNT"),rs.getString("TR_DATE"),rs.getInt("TRANSACTION_ID"));
 				}
 				request.setAttribute("transactions", trans);

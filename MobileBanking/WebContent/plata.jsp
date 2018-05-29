@@ -19,10 +19,22 @@
 	          <ul>
 	            <li><a href="mainPage.jsp">Lobby</a></li>
 	            <li><a href="tranzactii.jsp">Tranzactii Online</a></li>
-	            <li class="current"><a href="plata.jsp">Shop</a></li>
+	            <li class="current"><a href="plata.jsp">Plata cu cardul</a></li>
 	          </ul>
 	        </nav>
 	      </div>
 	</header>
+	
+	<form action="newtransaction" method="post" class="containerLog">
+		Numar card:<br/>
+		<input type="text" name="card_number"  required/><br/>
+		Data expirarii:<br/>
+		<input type="text" name="exp_date"  required/><br/>
+		Cod:<br/>
+		<input type="text" name="cvv_code"  required/><br/>
+		Cod IBAN destinatar:<input type="text" name="receiveriban" required/><br/>
+         Suma:<input type="number" name="ammount" min="1" required /><br/>
+		<input type="submit" name="newtransaction" value="Send" id="butonSubmitUserSiParola"/>
+	</form>
 </body>
 </html>
